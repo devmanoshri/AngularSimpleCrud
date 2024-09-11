@@ -1,0 +1,30 @@
+<div class="row mb-5">
+  @for( user of userList(); track user.id ){
+
+  <div class="col-sm-6">
+    <div class="card bg-light mb-5 shadow">
+      <div class="card-body">
+        <h3 class="card-title mb-0">
+          {{ user.name }}
+        </h3>
+        <hr aria-hidden="true" />
+        <div class="mb-2">Username: {{ user.username }}</div>
+        <div>Email: {{ user.email }}</div>
+        <div class="mb-2">Phone: {{ user.phone }}</div>
+        <div>{{ user.company.name }}</div>
+        <div>
+          <small>{{ user.company.catchPhrase }}</small>
+        </div>
+        <div>
+          <small>{{ user.company.bs }}</small>
+        </div>
+
+        <hr aria-hidden="true" />
+        <a [routerLink]="['/users/' + user.id + '/posts']" class="card-link">
+          View posts
+        </a>
+      </div>
+    </div>
+  </div>
+  }
+</div>

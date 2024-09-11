@@ -1,10 +1,9 @@
 <h1>User list</h1>
 
-<!-- @if(users().length){
-<small> {{ users().length }} users found! </small>}@else {
-<p>No user found</p>
-} -->
-
-
+@if(users.length){
+<small> {{ users.length }} users found! </small>
 <hr aria-hidden="true" class="mb-5" />
-<!--<app-users *ngIf="users?.length" [users]="users"></app-users> -->
+<app-users [userList]="users"></app-users>
+}@else {
+<p>No user found</p>
+}
