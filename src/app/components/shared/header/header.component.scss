@@ -1,0 +1,11 @@
+.nav-item {
+  &.active {
+    background-color: rgba(#000000, 0.5);
+  }
+  &:hover {
+    background-color: rgba(#000000, 0.4);
+  }
+  .nav-link {
+    padding: 1rem;
+  }
+}
