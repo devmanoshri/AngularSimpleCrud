@@ -15,6 +15,7 @@ import { MessagesComponent } from './components/shared/messages/messages.compone
     HeaderComponent,
     FooterComponent,
     DashboardComponent,
+
   ],
   //providers: [provideHttpClient(withFetch())],
   templateUrl: './app.component.html',

@@ -11,5 +11,4 @@ import { RouterLink } from '@angular/router';
 })
 export class UsersComponent {
   userList = input.required<User[]>();
-
 }
