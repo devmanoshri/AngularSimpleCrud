@@ -1,1 +1,23 @@
-<p>messages works!</p>
+@if (messages.length) {
+  <div  class="message rt">
+    @for(message of messages; track message.id){
+      <div
+    role="status"
+    tabindex="0"
+    class="message-body shadow {{ message.type }}"
+  >
+    <p>
+      {{ message.message }}
+    </p>
+    <button
+      class="message-close"
+      tabindex="0"
+      (click)="closeMe(message.id)"
+    >
+      <span>X</span>
+    </button>
+  </div>
+    }
+</div>
+}
+
