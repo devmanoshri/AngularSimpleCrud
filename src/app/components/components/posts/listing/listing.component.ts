@@ -1,8 +1,8 @@
-import { Component, OnInit, TemplateRef, input } from '@angular/core';
+import { Component, OnInit, TemplateRef, input, output } from '@angular/core';
 import { Post } from '../../../../models/post.model';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { ActivatedRoute } from '@angular/router';
-import { AddEditComponent } from "../add-edit/add-edit.component";
+import { AddEditComponent } from '../add-edit/add-edit.component';
 
 @Component({
   selector: 'app-listing',
@@ -12,27 +12,38 @@ import { AddEditComponent } from "../add-edit/add-edit.component";
   styleUrl: './listing.component.scss',
   providers: [BsModalService],
 })
-export class ListingComponent  {
+export class ListingComponent {
   postList = input.required<Post[]>();
-  modalRef?: BsModalRef;
-
   userId = input.required<string>();
-  constructor(
-    private modalService: BsModalService,
-    private route: ActivatedRoute
-  ) {}
+  addEditPost = output<number>();
+  deletePost = output<number>();
 
+  //modalRef?: BsModalRef;
 
+  // constructor(
+  //  // private modalService: BsModalService,
+  //   private route: ActivatedRoute
+  // ) {}
 
-
-  openModal(viewUserTemplate: TemplateRef<any>, userId: string) {
-    if (this.userId()) {
-      // this.user = this.userData.find((x) => x.id === userId);
-      // console.log(this.user);
-      this.modalRef = this.modalService.show(viewUserTemplate);
-    }
+  // openModal(viewUserTemplate: TemplateRef<any>, userId: string) {
+  //   if (this.userId()) {
+  //     // this.user = this.userData.find((x) => x.id === userId);
+  //     // console.log(this.user);
+  //     this.modalRef = this.modalService.show(viewUserTemplate);
+  //   }
+  // }
+  // exitModal = (): void => {
+  //   this.modalRef?.hide();
+  // };
+  postId(index: number, post: Post): number {
+    return post.id;
   }
-  exitModal = (): void => {
-    this.modalRef?.hide();
-  };
+
+  onAddEditPost(postId = 0): void {
+    this.addEditPost.emit(postId);
+  }
+
+  onDeletePost(postId = 0): void {
+    this.deletePost.emit(postId);
+  }
 }

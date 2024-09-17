@@ -1,32 +1,27 @@
-<h1>Post List{{ userId }}</h1>
+<h1>Post List</h1>
 @if(postList.length){
 <small> {{ postList.length }} posts found!!</small>
 <hr aria-hidden="true" class="mb-5" />
-<app-listing [postList]="postList" userId="{{ userId }}"></app-listing>
+<app-listing
+  [postList]="postList"
+  userId="{{ userId }}"
+  (addEditPost)="onAddEditPost($event)"
+  (deletePost)="onDeletePost($event)"
+></app-listing>
 }@else {
 <p>No posts found by this user</p>
 }
 
-<!--
-<app-listing
-  *ngIf="posts"
-  [posts]="posts"
-  (addEditPost)="onAddEditPost($event)"
-  (deletePost)="onDeletePost($event)"
-></app-listing>
-
- <app-add-edit
-  *ngIf="showModal"
+@if(showModal){
+<app-add-edit
   [selectedPost]="selectedPost"
   (closeModal)="onCloseModal()"
   (savePost)="onSavePost($event)"
 ></app-add-edit>
+}
 
-<app-modal
-  *ngIf="showDeleteModal"
-  [config]="deleteModalConfig"
-  (closeModal)="showDeleteModal = false"
->
+@if(showDeleteModal){
+<app-modal [config]="deleteModalConfig" (closeModal)="showDeleteModal = false">
   <div class="modal-body">
     <p>Are you sure to delete?</p>
   </div>
@@ -36,4 +31,5 @@
       No
     </button>
   </div>
-</app-modal> -->
+</app-modal>
+}

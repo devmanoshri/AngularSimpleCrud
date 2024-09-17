@@ -14,4 +14,21 @@ export class PostService {
   getPostList(userId: string): Observable<Post[]> {
     return this.httpClient.get<Post[]>(`${this.baseUrl}/users/${userId}/posts`);
   }
+
+  savePost(dataToSave: Partial<Post>): Observable<Post> {
+    if (dataToSave.id) {
+      return this.httpClient.put<Post>(
+        `${this.baseUrl}/posts/${dataToSave.id}`,
+        dataToSave
+      );
+    }
+    return this.httpClient.post<Post>(
+      `${this.baseUrl}/posts`,
+      dataToSave
+    );
+  }
+
+  deletePost(postId: number): Observable<any> {
+    return this.httpClient.delete(`${this.baseUrl}/posts/${postId}`);
+  }
 }
