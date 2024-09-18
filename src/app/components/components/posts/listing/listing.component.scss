@@ -5,6 +5,10 @@
     position: absolute;
     top: 1rem;
     right: 1rem;
+    .btn-warning{
+      margin-left: 3px;
+    }
+
   }
   &:focus,
   &:focus-within,
@@ -14,4 +18,9 @@
       display: inline-block;
     }
   }
+}
+
+.add-edit-btn {
+  display: flex;
+  justify-content: flex-end;
 }

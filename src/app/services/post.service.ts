@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class PostService {
-  private baseUrl = 'http://jsonplaceholder.typicode.com';
+  private baseUrl = 'https://jsonplaceholder.typicode.com';
 
   constructor(private httpClient: HttpClient) {}
 
@@ -22,10 +22,7 @@ export class PostService {
         dataToSave
       );
     }
-    return this.httpClient.post<Post>(
-      `${this.baseUrl}/posts`,
-      dataToSave
-    );
+    return this.httpClient.post<Post>(`${this.baseUrl}/posts`, dataToSave);
   }
 
   deletePost(postId: number): Observable<any> {

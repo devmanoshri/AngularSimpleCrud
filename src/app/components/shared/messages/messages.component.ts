@@ -22,6 +22,6 @@ export class MessagesComponent {
   }
 
   closeMe(index: number): void {
-    this.messagesService.removeMessage(index);
+    this.messagesService.removeMessage(index - 1);
   }
 }

@@ -4,6 +4,7 @@ import { DashboardComponent } from './components/components/dashboard/dashboard.
 import { FooterComponent } from './components/shared/footer/footer.component';
 import { HeaderComponent } from './components/shared/header/header.component';
 import { MessagesComponent } from './components/shared/messages/messages.component';
+import { LoaderComponent } from './components/shared/loader/loader.component';
 
 @Component({
   selector: 'app-root',
@@ -15,7 +16,7 @@ import { MessagesComponent } from './components/shared/messages/messages.compone
     HeaderComponent,
     FooterComponent,
     DashboardComponent,
-
+    LoaderComponent,
   ],
   //providers: [provideHttpClient(withFetch())],
   templateUrl: './app.component.html',

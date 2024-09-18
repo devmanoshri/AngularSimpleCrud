@@ -49,7 +49,6 @@ export class AddEditComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    console.log(this.selectedPost());
     this.initForm();
     if (this.selectedPost()) {
       this.isEditMode = true;
@@ -64,8 +63,8 @@ export class AddEditComponent implements OnInit {
   }
 
   onSubmit(): void {
-    const formData = this.postForm.value;
-    console.log(formData);
+    // const formData = this.postForm.value;
+    // console.log(formData);
 
     this.postForm.markAllAsTouched();
     if (this.postForm.valid) {
@@ -74,6 +73,7 @@ export class AddEditComponent implements OnInit {
       } else {
         this.dataToSave = { ...this.postForm.value };
       }
+
       this.savePost.emit(this.dataToSave);
     }
   }
