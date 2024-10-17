@@ -1,35 +1,39 @@
-<h1>Post List</h1>
-@if(postList.length){
-<small> {{ postList.length }} posts found!!</small>
-<hr aria-hidden="true" class="mb-3" />
-<app-listing
-  [postList]="postList"
-  userId="{{ userId }}"
-  (addEditPost)="onAddEditPost($event)"
-  (deletePost)="onDeletePost($event)"
-></app-listing>
-}@else {
-<p>No posts found by this user</p>
-}
-
-@if(showModal){
-<app-add-edit
-  [selectedPost]="selectedPost"
-  (closeModal)="onCloseModal()"
-  (savePost)="onSavePost($event)"
-></app-add-edit>
-}
-
-@if(showDeleteModal){
-<app-modal [config]="deleteModalConfig" (closeModal)="showDeleteModal = false">
-  <div class="modal-body">
-    <p>Are you sure to delete?</p>
-  </div>
-  <div class="modal-footer">
-    <button class="btn btn-info" (click)="confirmDelete()">Yes</button>
-    <button class="btn btn-success" (click)="showDeleteModal = false">
-      No
-    </button>
-  </div>
-</app-modal>
-}
+<div class="pdf-button-container">
+  <button (click)="onGeneratePDF()" class="pdfButton">Generate PDF</button>
+</div>
+<div id="contentToConvert">
+  <h1>Post List</h1>
+  @if(postList.length){
+  <small> {{ postList.length }} posts found!!</small>
+  <hr aria-hidden="true" class="mb-3" />
+  <app-listing
+    [postList]="postList"
+    userId="{{ userId }}"
+    (addEditPost)="onAddEditPost($event)"
+    (deletePost)="onDeletePost($event)"
+  ></app-listing>
+  }@else {
+  <p>No posts found by this user</p>
+  } @if(showModal){
+  <app-add-edit
+    [selectedPost]="selectedPost"
+    (closeModal)="onCloseModal()"
+    (savePost)="onSavePost($event)"
+  ></app-add-edit>
+  } @if(showDeleteModal){
+  <app-modal
+    [config]="deleteModalConfig"
+    (closeModal)="showDeleteModal = false"
+  >
+    <div class="modal-body">
+      <p>Are you sure to delete?</p>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-info" (click)="confirmDelete()">Yes</button>
+      <button class="btn btn-success" (click)="showDeleteModal = false">
+        No
+      </button>
+    </div>
+  </app-modal>
+  }
+</div>

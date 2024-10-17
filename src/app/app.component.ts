@@ -1,10 +1,12 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { RouterLink, RouterOutlet } from '@angular/router';
 import { DashboardComponent } from './components/components/dashboard/dashboard.component';
 import { FooterComponent } from './components/shared/footer/footer.component';
 import { HeaderComponent } from './components/shared/header/header.component';
 import { MessagesComponent } from './components/shared/messages/messages.component';
 import { LoaderComponent } from './components/shared/loader/loader.component';
+//import { jsPDF } from 'jspdf';
+//import html2canvas from 'html2canvas';
 
 @Component({
   selector: 'app-root',
@@ -23,5 +25,5 @@ import { LoaderComponent } from './components/shared/loader/loader.component';
   styleUrl: './app.component.scss',
 })
 export class AppComponent {
-  title = 'AngularSimpleCrud';
+
 }

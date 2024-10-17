@@ -11,6 +11,7 @@ import {
 import { Subscription } from 'rxjs';
 import { MessageType } from '../../shared/messages/messages.utils';
 import { AddEditComponent } from './add-edit/add-edit.component';
+import { generatePDF } from '../../../util/htmlToPdf';
 type Posts = { posts: Post[] };
 
 @Component({
@@ -52,6 +53,9 @@ export class PostsComponent implements OnInit {
       subUserId.unsubscribe();
     });
   }
+  onGeneratePDF() {
+    generatePDF('postList');
+  }
   onAddEditPost(postId: number): void {
     if (postId) {
       this.selectedPost = this.getPostToEdit(postId);
@@ -67,18 +71,20 @@ export class PostsComponent implements OnInit {
   onSavePost(dataToSave: Partial<Post>): void {
     dataToSave = { ...dataToSave, userId: this.userId };
     this.subscriptions.push(
-      this.postService.savePost(dataToSave).subscribe((savedData: Post) => {
-        if (dataToSave.id) {
-          this.updatePosts(savedData);
-        } else {
-          this.postList = [savedData, ...this.postList];
-        }
-        this.onCloseModal();
-        this.messagesService.showMessage({
-          message: 'Data saved Successfully!!',
-          type: MessageType.Success,
-          id: 0,
-        });
+      this.postService.savePost(dataToSave).subscribe({
+        next: (savedData: Post) => {
+          if (dataToSave.id) {
+            this.updatePosts(savedData);
+          } else {
+            this.postList = [savedData, ...this.postList];
+          }
+          this.onCloseModal();
+          this.messagesService.showMessage({
+            message: 'Data saved Successfully!!',
+            type: MessageType.Success,
+            id: 0,
+          });
+        },
       })
     );
   }

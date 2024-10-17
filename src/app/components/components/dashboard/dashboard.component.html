@@ -1,9 +1,14 @@
-<h1>User list</h1>
+<div class="pdf-button-container">
+  <button (click)="onGeneratePDF()" class="pdfButton">Generate PDF</button>
+</div>
+<div id="contentToConvert">
+  <h1>User list</h1>
 
-@if(users.length){
-<small> {{ users.length }} users found! </small>
-<hr aria-hidden="true" class="mb-5" />
-<app-users [userList]="users"></app-users>
-}@else {
-<p>No user found</p>
-}
+  @if(users.length){
+  <small> {{ users.length }} users found! </small>
+  <hr aria-hidden="true" class="mb-5" />
+  <app-users [userList]="users"></app-users>
+  }@else {
+  <p>No user found</p>
+  }
+</div>

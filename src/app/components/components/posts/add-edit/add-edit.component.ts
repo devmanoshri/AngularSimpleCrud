@@ -69,7 +69,7 @@ export class AddEditComponent implements OnInit {
     this.postForm.markAllAsTouched();
     if (this.postForm.valid) {
       if (this.isEditMode) {
-        this.dataToSave = { ...this.selectedPost, ...this.postForm.value };
+        this.dataToSave = { ...this.selectedPost(), ...this.postForm.value };
       } else {
         this.dataToSave = { ...this.postForm.value };
       }

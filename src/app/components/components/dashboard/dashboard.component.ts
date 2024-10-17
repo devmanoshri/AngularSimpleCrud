@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { User } from '../../../models/user.model';
 import { UsersComponent } from "./users/users.component";
+import { generatePDF } from '../../../util/htmlToPdf';
 type Users = { users: User[] };
 
 @Component({
@@ -26,6 +27,9 @@ export class DashboardComponent {
       },
     });
     //this.users = this.activatedRoute.snapshot.data['users'];
+  }
+  onGeneratePDF() {
+    generatePDF('userList');
   }
 
   // fetchUserList() {

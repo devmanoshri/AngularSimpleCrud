@@ -1,89 +1,10 @@
-<!-- <h2>Add new post 🚀{{ userId }}</h2>
-<div class="modalButton mb-3">
-  <button (click)="exitModal()">close</button>
-</div>
-
-<form [formGroup]="postForm" (ngSubmit)="onSubmit()">
-  <div class="control">
-    <label for="title">Title</label>
-    <input id="title" type="title" formControlName="title" />
-  </div>
-  <div class="control">
-    <label for="body">Body</label>
-    <input id="body" type="body" formControlName="body" />
-  </div> -->
-
-  <!-- <label for="title"> Title <span class="text-danger">*</span> </label>
-          <input
-            formControlName="title"
-            type="text"
-            class="form-control"
-            name="title"
-            id="title"
-            placeholder="Add a title"
-          />
-          <small
-            class="text-danger"
-            *ngIf="
-              title.invalid &&
-              (title.dirty || title.touched) &&
-              title.errors.required
-            "
-          >
-            Title is required!
-          </small>
-
-          <label for="message">
-            Message <span class="text-danger">*</span>
-          </label>
-          <textarea
-            formControlName="body"
-            class="form-control"
-            name="message"
-            id="message"
-            rows="3"
-            placeholder="Add a message"
-          ></textarea>
-          <small
-            class="text-danger"
-            *ngIf="
-              body.invalid && (body.dirty || body.touched) && body.errors.required
-            "
-          >
-            Message is required!
-          </small>
-
-  <div class="modal-footer">
-    <button
-      type="button"
-      class="btn btn-secondary"
-      (click)="onCloseModal()"
-      data-dismiss="modal"
-    >
-      Close
-    </button>
-    <button type="button" type="submit" class="btn btn-primary">
-      Save changes
-    </button>
-  </div>-->
-
-  <!-- <p class="form-actions">
-    <button type="button" class="button button-flat" (click)="resetForm()">
-      Reset
-    </button>
-    <button type="submit" class="button">Add Post</button>
-  </p>
-
-  @if(postForm.touched && postForm.invalid){
-  <p class="control-error">Invalid Form - please check</p>
-  }
-</form> -->
-
 <app-modal [config]="modalConfig" (closeModal)="onCloseModal()">
   <form [formGroup]="postForm" (submit)="onSubmit()">
     <div class="modal-body">
       <div class="form-group">
-        <label for="title" class="field-name"> Title <span class="text-danger">*</span> </label>
+        <label for="title" class="field-name">
+          Title <span class="text-danger">*</span>
+        </label>
         <input
           formControlName="title"
           type="text"
@@ -92,12 +13,9 @@
           id="title"
           placeholder="Add a title"
         />
-        @if(title.invalid &&
-        (title.dirty || title.touched) &&
-        title.errors){
-          <small class="text-danger"> Title is required! </small>
+        @if(title.invalid && (title.dirty || title.touched) && title.errors){
+        <small class="text-danger"> Title is required! </small>
         }
-
       </div>
       <div class="form-group">
         <label for="message" class="field-name">
@@ -112,11 +30,8 @@
           placeholder="Add a message"
         ></textarea>
         @if(body.invalid && (body.dirty || body.touched) && body.errors){
-          <small  class="text-danger">
-            Message is required!
-          </small>
+        <small class="text-danger"> Message is required! </small>
         }
-
       </div>
     </div>
     <div class="modal-footer">
